@@ -1,0 +1,62 @@
+-- for printing only particualr columns data
+select first_name, salary from Worker;
+
+-- without using * operator using select
+select 55+11;
+
+-- using lower case
+select lcase('VAIBHAV');
+
+-- using upper case
+select Ucase('vaibhav');
+
+-- using where and condition
+select * from worker where salary > 100000;
+
+-- using where for specific column print the data
+select * from worker where department ='HR';
+
+-- using between for printing the range from this to this
+select * from worker where salary between 80000 and 300000;
+
+-- using or
+select * from worker where department= 'HR' or department= 'Admin';
+
+-- using in 
+select * from worker where department in('HR', 'Admin', 'Account');
+
+-- using not
+select * from worker where department not in('HR', 'Admin');
+
+-- pattern searching/ wildcard
+select * from worker where first_name like '_v%';
+
+-- order by asse
+select * from worker order by salary;
+
+-- order by desc
+select * from worker order by salary desc;
+
+-- distinct 
+select distinct department from worker;
+
+-- group by
+select  department from worker group by department;
+
+-- using count
+select department, count(department) from worker group by department;
+
+-- Avg salary per department 
+select department, avg(salary) from worker group by department;
+
+-- min avg salary
+select department, min(salary) from worker group by department;
+
+-- max avg salary
+select department, max(salary) from worker group by department;
+
+-- sum
+select department, sum(salary) from worker group by department; 
+
+-- group by using having
+select department, count(department) from worker group by department having count(department)>2; 

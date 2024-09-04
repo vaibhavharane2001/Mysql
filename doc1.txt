@@ -1,0 +1,79 @@
+create table account
+(id int primary key,
+name varchar(255) unique,
+balance int,
+constraint bank_balance_chk check(balance>1000)
+);
+
+create table customer
+(id int primary key,
+name varchar(255) unique,
+deposite int,
+constraint bank_deposite check(deposite>1000)
+);
+
+create table order_details
+(order_id int primary key,
+deleviry_date date,
+cust_id int,
+foreign key(cust_id) references customer(id) on delete set null
+);
+
+select * from order_details;
+
+insert into order_details values(3, '2024-01-25', 1);
+
+insert into order_details values(4, '2024-01-25', 1);
+
+delete from customer where id=1;
+
+select * from customer;
+
+replace into customer(id, name)
+values(4, 'vaibhav');
+
+replace into customer set id=3, name='Abhi', deposite=25000;
+
+drop table order_details;
+
+insert into customer
+(id, name, deposite)values
+(1, 'A', 100000);
+
+insert into customer values(2, 'B', 100);
+
+insert into customer values(3, 'kartik', 500000);
+
+select * from bank_details;
+
+select * from bank;
+
+alter table bank modify balance double;
+
+desc bank;
+
+alter table bank add balance int not null;
+
+alter table bank drop column balance;
+
+drop table account;
+
+alter table bank change column balance saving float not null;
+
+alter table bank rename bank_details;
+
+drop table bank_details;
+
+select * from bank_details;
+
+update bank_details set name='vaibhav' where id=1;
+
+set sql_safe_updates=0;
+
+update bank_details set balance=600000;
+
+delete from bank_details where id=1;
+
+delete from bank_details;
+
+drop table customer;
